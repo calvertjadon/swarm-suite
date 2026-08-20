@@ -1,0 +1,13 @@
+[importlinter]
+root_packages =
+    app
+include_external_packages = True
+
+[importlinter:contract:1]
+name = Production code must not import test or script modules
+type = forbidden
+source_modules =
+    app
+forbidden_modules =
+    tests
+    scripts

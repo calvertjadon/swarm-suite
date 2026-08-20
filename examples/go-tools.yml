@@ -1,0 +1,5 @@
+go:
+  coder: "go test ./... && go test ./features/"
+  cleaner: "go test ./... && out=\"$(gocyclo -over 6 . 2>&1 || true)\" && { [ -z \"$out\" ] || { printf '%s\\n' \"$out\" >&2; exit 1; }; } && ! grep -rnE 'TODO|FIXME|XXX|fmt\\.Println' --include='*.go' ."
+  architect: "golangci-lint run"
+  hardener: "gremlins unleash --threshold-efficacy 100 ./..."

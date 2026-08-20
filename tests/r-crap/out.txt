@@ -1,0 +1,7 @@
+/home/gtky/src/swarm-suite/tests/r-crap/app/m.py:1: simple: 1
+/home/gtky/src/swarm-suite/tests/r-crap/app/m.py:4: borderline: 6
+/home/gtky/src/swarm-suite/tests/r-crap/app/m.py:14: too_big: 7
+/home/gtky/src/swarm-suite/tests/r-crap/app/m.py:25: outer: 1
+/home/gtky/src/swarm-suite/tests/r-crap/app/m.py:32: extras: 6
+/home/gtky/src/swarm-suite/tests/r-crap/app/m.py:26: inner: 2
+crap.py: 6 function(s) scored, max allowed 6

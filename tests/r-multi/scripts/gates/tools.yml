@@ -1,0 +1,4 @@
+go:
+  coder: "echo go-ok && true"
+ts:
+  coder: "echo ts-fails && false"

@@ -1,0 +1,13 @@
+linters:
+  disable-all: true
+  enable:
+    - depguard
+linters-settings:
+  depguard:
+    rules:
+      main:
+        deny:
+          - pkg: "tests"
+            desc: production code must not import test packages
+          - pkg: "scripts"
+            desc: production code must not import script packages
