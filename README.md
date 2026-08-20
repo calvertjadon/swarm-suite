@@ -21,9 +21,14 @@ that has `omp`; each repo onboards itself with `/swarm init`.
 ## Install
 
 ```bash
-bash install.sh          # idempotent; differing existing files are backed up
+curl -fsSL https://raw.githubusercontent.com/calvertjadon/swarm-suite/main/bootstrap.sh | sh
 # then restart any running omp session
 ```
+
+The suite lands in `~/.local/share/swarm-suite` (override with
+`SWARM_SUITE_DIR=…`); existing installs are moved to a timestamped `.bak`.
+Alternative for contributors/updaters: clone the repo and run `bash install.sh`
+from it — `install.sh` is idempotent and backs up differing files.
 
 ## Verify
 
