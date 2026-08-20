@@ -14,7 +14,7 @@ that has `omp`; each repo onboards itself with `/swarm init`.
 | `global/agents/*.md` | `~/.omp/agent/agents/` | Six role agents (specifier, coder, cleaner, architect, hardener, qa) |
 | `global/skills/swarm/` | `~/.omp/agent/skills/swarm/` | Orchestrator protocol + per-repo gate machinery templates |
 | `global/commands/*.md` | `~/.omp/agent/commands/` | `/swarm` and `/swarm-init` slash commands |
-| `install.sh` | — | Copies the above with backups; sets `task.isolation.mode=auto` |
+| `install.sh` / `install.ps1` | — | Copies the above with backups; sets `task.isolation.mode=auto` (bash / PowerShell) |
 | `examples/` | — | Validated toolchain cells: `go-tools.yml`, `golangci-depguard.yml` (v1), `importlinter.contract` |
 | `tests/gates-test.sh` | — | 30-assertion unit suite for the gate machinery (detect/resolve/dispatch/qa/crap.py) |
 
@@ -29,6 +29,23 @@ The suite lands in `~/.local/share/swarm-suite` (override with
 `SWARM_SUITE_DIR=…`); existing installs are moved to a timestamped `.bak`.
 Alternative for contributors/updaters: clone the repo and run `bash install.sh`
 from it — `install.sh` is idempotent and backs up differing files.
+
+### Windows
+
+```powershell
+powershell -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/calvertjadon/swarm-suite/main/bootstrap.ps1 -OutFile $env:TEMP\swarm-bootstrap.ps1; & $env:TEMP\swarm-bootstrap.ps1"
+# then restart any running omp session
+```
+
+The suite lands in `%USERPROFILE%\.local\share\swarm-suite` (override with
+`$env:SWARM_SUITE_DIR`); existing installs are moved to a timestamped `.bak`.
+Alternative: clone the repo and run `powershell -ExecutionPolicy Bypass -File install.ps1` from it —
+`install.ps1` is idempotent and backs up differing files, mirroring
+`install.sh`.
+
+The gate machinery is POSIX shell: `scripts/gates/*.sh` (copied into each
+repo) and `tests/gates-test.sh` run under `bash`. Install Git Bash (or WSL)
+and ensure `bash` is on PATH before running `/swarm` or the verify step.
 
 ## Verify
 
@@ -71,5 +88,6 @@ facts this suite already encodes (do not rediscover them):
 
 ## Updating
 
-Edit files in this repo, re-run `install.sh`, restart omp. Project-level
-overrides still win per OMP precedence (`.omp/agents/`, `.omp/commands/`).
+Edit files in this repo, re-run `install.sh` (or `powershell -File install.ps1`),
+restart omp. Project-level overrides still win per OMP precedence
+(`.omp/agents/`, `.omp/commands/`).
