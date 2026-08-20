@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Unit tests for the swarm gate machinery. Run: bash test.sh
 set -uo pipefail
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(mktemp -d "${TMPDIR:-/tmp}/swarm-gates-test.XXXXXX")"
+trap 'rm -rf "$ROOT"' EXIT
 TPL="${SWARM_TPL:-$HOME/.omp/agent/skills/swarm/templates}"
 pass=0 fail=0
 

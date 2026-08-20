@@ -1,2 +1,0 @@
-crap.py: 1 function(s) exceed max complexity 6:
-  /home/gtky/src/swarm-suite/tests/r-crap/app/m.py:14: too_big: 7

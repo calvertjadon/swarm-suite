@@ -1,2 +1,0 @@
-py:
-  cleaner: "echo cleaner-ran && true"
